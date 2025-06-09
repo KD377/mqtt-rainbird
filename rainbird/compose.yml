@@ -1,0 +1,17 @@
+services:
+  mqtt-rainbird:
+    container_name: mqtt-rainbird
+    build:
+      context: .
+    restart: always
+    networks:
+      - zwave
+    volumes:
+      - ./rainbird.log:/app/rainbird.log
+    env_file:
+      - .env
+
+networks:
+  zwave:
+    external: true
+    name: pi_zwave
