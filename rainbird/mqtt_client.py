@@ -194,6 +194,7 @@ class MqttClient:
                 except Exception as e:
                     self.logger.error(f"[RAINBIRD_ERROR] Cannot fetch data: {e}")
                     await self.send_pushover_message("[RAINBIRD_ERROR] Cannot fetch data")
+                    continue
             if self.rain_delay_days != rain_delay:
                 self.logger.info(f"[RAIN_DELAY] State changed to {rain_delay}")
                 self.rain_delay_days = rain_delay
